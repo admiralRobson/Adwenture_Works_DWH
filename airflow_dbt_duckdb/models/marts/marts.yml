@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: dim_product
+    description: "Tabela wymiarów dotycząca produktu. Zawiera unikalne informacje na temat produktu."
+    columns:
+      - name: dwh_dim_product_id
+        description: "Klucz unikalny dla tabeli wymiaru produktu (Surrogate Key wygenerowany przez MD5)"
+        tests:
+          - unique
+          - not_null
+  - name: fct_sales
+    description: "Tabela faktu dotycząca sprzedaży. Zawiera dane na temat sprzedaży"
+    columns: 
+      - name: dwh_fact_sales_id
+        description: "Klucz unikalny dla tabeli faktu (Surrogate Key wygenerowany przez MD5)"
+        tests:
+          - unique
+          - not_null 

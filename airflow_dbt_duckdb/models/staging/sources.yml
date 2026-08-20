@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: raw_sources
+    tables:
+      - name: sales
+        config:
+          external_location: "../data_raw/Sales_*.parquet"
+      - name: product
+        config:
+          external_location: "../data_raw/Product_*.parquet"
+      - name: reseller
+        config:
+          external_location: "../data_raw/Reseller_*.parquet"
+      - name: region
+        config:
+          external_location: "../data_raw/Region_*.parquet"
+      - name: sales_person
+        config:
+          external_location: "../data_raw/Salesperson_*.parquet"
+      - name: targets
+        config:
+          external_location: "../data_raw/Targets_*.parquet"    

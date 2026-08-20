@@ -1,0 +1,9 @@
+airflow_dbt_duckdb:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: 'airflow_dbt_duckdb' # Tutaj powstanie Twoja lokalna hurtownia danych
+      threads: 1
+      extensions:
+        - parquet
