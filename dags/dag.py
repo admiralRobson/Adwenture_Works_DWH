@@ -11,13 +11,13 @@ from cosmos import ProfileConfig
 from cosmos import ExecutionConfig
 from cosmos import RenderConfig
 from cosmos.profiles import DuckDBUserPasswordProfileMapping
-
+from cosmos import ExecutionMode
 
 # 1. Definiowanie ścieżek w systemie 
 HOME_DIR = Path(os.path.expanduser("~"))
 DBT_PROJECT_DIR = HOME_DIR / "airflow_dbt_duckdb_project" / "airflow_dbt_duckdb"
 DBT_EXECUTABLE_PATH = HOME_DIR / "airflow_dbt_duckdb_project" / "venv" / "bin" / "dbt"
-DBT_DATABASE_PATH = DBT_PROJECT_DIR / "data" / "airflow_dbt_duckdb.duckdb"
+DBT_DATABASE_PATH = DBT_PROJECT_DIR /  "airflow_dbt_duckdb.duckdb"
 
 # 2. Konfiguracja profilu dbt dla DuckDB
 profile_config = ProfileConfig(
@@ -35,6 +35,7 @@ with DAG(
     start_date=datetime(2026, 8, 21),
     schedule= "@daily",  # Uruchamiaj codziennie
     catchup=False,
+    max_active_tasks=1,
     tags=["dbt", "duckdb", "analytics"],
 ) as dag:
     
@@ -50,6 +51,7 @@ with DAG(
         profile_config=profile_config,
         execution_config=ExecutionConfig(
             dbt_executable_path=str(DBT_EXECUTABLE_PATH),
+            execution_mode=ExecutionMode.LOCAL
         ),
         render_config=RenderConfig(
             # Opcjonalnie: możesz przefiltrować uruchamiane modele

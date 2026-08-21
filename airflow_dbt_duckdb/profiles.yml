@@ -3,7 +3,7 @@ airflow_dbt_duckdb:
   outputs:
     dev:
       type: duckdb
-      path: 'airflow_dbt_duckdb' # Tutaj powstanie Twoja lokalna hurtownia danych
+      path: 'airflow_dbt_duckdb.duckdb' # Tutaj powstanie Twoja lokalna hurtownia danych
       threads: 1
       extensions:
         - parquet
