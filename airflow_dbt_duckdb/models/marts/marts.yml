@@ -17,3 +17,9 @@ models:
         tests:
           - unique
           - not_null 
+      - name: unitprice
+        description: "Cena jednostkowa podawana w $"
+        tests:
+          - not_null
+          - not_negative:
+              min_value: 0 
